@@ -21,7 +21,7 @@ public class ClientService {
 	public ClientModel save(ClientModel clientModel) {
 		return clientRepository.save(clientModel);
 	}
-
+	
 	public List<ClientModel> listClients() {
 		return clientRepository.findAll();
 	}

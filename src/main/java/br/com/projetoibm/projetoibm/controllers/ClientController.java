@@ -62,7 +62,7 @@ public class ClientController {
 		}
 		var clientModel = new ClientModel();
 		BeanUtils.copyProperties(clientDTO, clientModel);
-		clientModel.setId(clientModelOptional.get().getId());
+		clientModel.setIdClient(clientModelOptional.get().getIdClient());
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.save(clientModel));
 	}
 }

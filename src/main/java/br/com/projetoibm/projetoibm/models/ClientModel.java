@@ -2,6 +2,10 @@ package br.com.projetoibm.projetoibm.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,7 +16,7 @@ public class ClientModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idClient;
 	
 	@Column(nullable = false, unique = false, length = 80)
 	private String nomeClient;
@@ -26,13 +30,22 @@ public class ClientModel {
 	@Column(nullable = false, unique = true, length = 80)
 	private String telClient;
 	
+	@OneToMany(mappedBy = "cliente")
+    private List<PedidoModel> pedidos = new ArrayList<PedidoModel>();
 
-	public int getId() {
-		return id;
+    public ClientModel() {
+    }
+
+    public List<PedidoModel> getPedidos() {
+        return pedidos;
+    }
+
+	public int getIdClient() {
+		return idClient;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
 	}
 
 	public String getNomeClient() {
@@ -67,8 +80,9 @@ public class ClientModel {
 		this.telClient = telClient;
 	}
 
+	public void setPedidos(List<PedidoModel> pedidos) {
+		this.pedidos = pedidos;
+	}
 
-
-	
-	
+    
 }

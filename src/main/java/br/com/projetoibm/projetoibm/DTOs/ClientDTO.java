@@ -14,24 +14,31 @@ public class ClientDTO {
 	public String getNomeClient() {
 		return nomeClient;
 	}
+	
 	public void setNomeClient(String nomeClient) {
 		this.nomeClient = nomeClient;
 	}
+	
 	public String getCpfClient() {
 		return cpfClient;
 	}
+	
 	public void setCpfClient(String cpfClient) {
 		this.cpfClient = cpfClient;
 	}
+	
 	public String getEmailClient() {
 		return emailClient;
 	}
+	
 	public void setEmailClient(String emailClient) {
 		this.emailClient = emailClient;
 	}
+	
 	public String getTelClient() {
 		return telClient;
 	}
+	
 	public void setTelClient(String telClient) {
 		this.telClient = telClient;
 	}
