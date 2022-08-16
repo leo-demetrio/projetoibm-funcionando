@@ -31,7 +31,7 @@ public class ClientController {
 	
 	@PostMapping
 	public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientDTO clientDTO) {
-		if(clientService.existsBycpfClient(clientDTO.getCpfClient())) {
+		if(clientService.existsBycpfClient(clientDTO.getCpf())) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Usuário ja cadastrado");
 		}
 		var clientModel = new ClientModel();
@@ -62,9 +62,11 @@ public class ClientController {
 		}
 		var clientModel = new ClientModel();
 		BeanUtils.copyProperties(clientDTO, clientModel);
-		clientModel.setIdClient(clientModelOptional.get().getIdClient());
+		clientModel.setId(clientModelOptional.get().getId());
 		return ResponseEntity.status(HttpStatus.OK).body(clientService.save(clientModel));
 	}
+	
+	
 }
 
 

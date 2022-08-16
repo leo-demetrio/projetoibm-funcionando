@@ -4,45 +4,39 @@ import javax.validation.constraints.NotBlank;
 
 public class ClientDTO {
 	@NotBlank
-	private String nomeClient;
+	private String nome;
 	@NotBlank
-	private String cpfClient;	
+	private String cpf;	
 	@NotBlank
-	private String emailClient;	
+	private String email;	
 	@NotBlank
-	private String telClient;
-	public String getNomeClient() {
-		return nomeClient;
-	}
+	private String tel;
 	
-	public void setNomeClient(String nomeClient) {
-		this.nomeClient = nomeClient;
+	public String getNome() {
+		return nome;
 	}
-	
-	public String getCpfClient() {
-		return cpfClient;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
-	public void setCpfClient(String cpfClient) {
-		this.cpfClient = cpfClient;
+	public String getCpf() {
+		return cpf;
 	}
-	
-	public String getEmailClient() {
-		return emailClient;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
-	
-	public void setEmailClient(String emailClient) {
-		this.emailClient = emailClient;
+	public String getEmail() {
+		return email;
 	}
-	
-	public String getTelClient() {
-		return telClient;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	public void setTelClient(String telClient) {
-		this.telClient = telClient;
+	public String getTel() {
+		return tel;
 	}
-	
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
 	
 	
 }

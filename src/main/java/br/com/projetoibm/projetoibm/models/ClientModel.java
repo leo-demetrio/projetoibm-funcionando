@@ -1,88 +1,70 @@
 package br.com.projetoibm.projetoibm.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="cliente")
 public class ClientModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idClient;
+	private int id;
+	private String nome;
+	private String cpf;
+	private String email;
+	private String tel;
 	
-	@Column(nullable = false, unique = false, length = 80)
-	private String nomeClient;
-	
-	@Column(nullable = false, unique = true, length = 80)
-	private String cpfClient;
-	
-	@Column(nullable = false, unique = true, length = 80)
-	private String emailClient;
-	
-	@Column(nullable = false, unique = true, length = 80)
-	private String telClient;
-	
-	@OneToMany(mappedBy = "cliente")
-    private List<PedidoModel> pedidos = new ArrayList<PedidoModel>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="cliente")
+    private Set<PedidoModel> pedidos = new HashSet<>();
 
-    public ClientModel() {
-    }
-
-    public List<PedidoModel> getPedidos() {
-        return pedidos;
-    }
-
-	public int getIdClient() {
-		return idClient;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNomeClient() {
-		return nomeClient;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeClient(String nomeClient) {
-		this.nomeClient = nomeClient;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getCpfClient() {
-		return cpfClient;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCpfClient(String cpfClient) {
-		this.cpfClient = cpfClient;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public String getEmailClient() {
-		return emailClient;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmailClient(String emailClient) {
-		this.emailClient = emailClient;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getTelClient() {
-		return telClient;
+	public String getTel() {
+		return tel;
 	}
 
-	public void setTelClient(String telClient) {
-		this.telClient = telClient;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
-	public void setPedidos(List<PedidoModel> pedidos) {
+	public Set<PedidoModel> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<PedidoModel> pedidos) {
 		this.pedidos = pedidos;
 	}
-
-    
 }

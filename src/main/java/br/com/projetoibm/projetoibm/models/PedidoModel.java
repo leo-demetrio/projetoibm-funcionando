@@ -1,10 +1,10 @@
 package br.com.projetoibm.projetoibm.models;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,38 +14,26 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="pedido")
-public class PedidoModel implements Serializable  {
-	private static final long serialVersionUID = 1L;
-	
+public class PedidoModel {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPedido;
+	int id;
 	
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "idClient")
+    @ManyToOne()
     private ClientModel cliente;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<ProdutoModel> produtos = new ArrayList<ProdutoModel>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="cliente")
+	private Set<ProdutoModel> produtos = new HashSet<>();
 
-    public List<ProdutoModel> getProdutos() {
-        return produtos;
-    }
-
-    public PedidoModel() {
-    }
-
-	public int getIdPedido() {
-		return idPedido;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public ClientModel getCliente() {
@@ -56,15 +44,13 @@ public class PedidoModel implements Serializable  {
 		this.cliente = cliente;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<ProdutoModel> getProdutos() {
+		return produtos;
 	}
 
-	public void setProdutos(List<ProdutoModel> produtos) {
+	public void setProdutos(Set<ProdutoModel> produtos) {
 		this.produtos = produtos;
 	}
-
-    
     
     
 }

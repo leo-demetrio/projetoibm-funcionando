@@ -8,5 +8,5 @@ import br.com.projetoibm.projetoibm.models.ClientModel;
 
 @Repository
 public interface ClientRepository extends JpaRepository<ClientModel, Integer> {
-	boolean existsBycpfClient(String cpf_client);
+	boolean existsBycpf(String cpf);
 }

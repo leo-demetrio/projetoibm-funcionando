@@ -26,13 +26,14 @@ public class ClientService {
 		return clientRepository.findAll();
 	}
 
-	public boolean existsBycpfClient(String cpf_client) {
-		return clientRepository.existsBycpfClient(cpf_client);
+	public boolean existsBycpfClient(String cpf) {
+		return clientRepository.existsBycpf(cpf);
 	}
-
+	
 	public Optional<ClientModel> findById(int id) {
 		return clientRepository.findById(id);
 	}
+
 
 	@Transactional
 	public void delete(ClientModel clientModel) {
