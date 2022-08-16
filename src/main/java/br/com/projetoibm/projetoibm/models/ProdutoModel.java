@@ -8,11 +8,13 @@ import java.util.List;
 
 @Entity
 @Table(name="produto")
+
 public class ProdutoModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    
     
     private String nome;
 
@@ -28,7 +30,7 @@ public class ProdutoModel{
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -41,7 +43,7 @@ public class ProdutoModel{
 		this.nome = nome;
 	}
 
-
+	
 	public void setPedido(PedidoModel pedido) {
 		this.pedido = pedido;
 	}

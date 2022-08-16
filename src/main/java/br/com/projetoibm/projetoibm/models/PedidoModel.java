@@ -41,6 +41,10 @@ public class PedidoModel {
 		return id;
 	}
 
+	public void setProdutos(List<ProdutoModel> produtos) {
+		this.produtos = produtos;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

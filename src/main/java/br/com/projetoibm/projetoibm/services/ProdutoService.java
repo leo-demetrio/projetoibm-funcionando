@@ -1,5 +1,7 @@
 package br.com.projetoibm.projetoibm.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,4 +16,10 @@ public class ProdutoService {
 	public ProdutoModel save(ProdutoModel produtoModel) {
 		return produtoRepository.save(produtoModel);
 	}
+
+	public List<ProdutoModel> listProdutos() {
+		return produtoRepository.findAll();
+	}
+
+
 }

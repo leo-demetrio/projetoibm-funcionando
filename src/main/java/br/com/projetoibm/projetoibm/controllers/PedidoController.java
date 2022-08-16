@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projetoibm.projetoibm.DTOs.PedidoDTO;
 import br.com.projetoibm.projetoibm.models.ClientModel;
 import br.com.projetoibm.projetoibm.models.PedidoModel;
 import br.com.projetoibm.projetoibm.services.ClientService;
@@ -31,12 +33,14 @@ public class PedidoController {
 	ClientService clientService;
 	
 	@GetMapping
-	public ResponseEntity<List<PedidoModel>> listClients() {
+	public ResponseEntity<List<PedidoModel>> listProdutos() {
 		return ResponseEntity.status(HttpStatus.OK).body(pedidoService.listPedidos());
 	}
 	
 	@PostMapping
-	public ResponseEntity<PedidoModel> saveClient(@RequestBody PedidoModel pedidoModel) {
+	public ResponseEntity<PedidoModel> saveClient(@RequestBody PedidoDTO pedidoDTO) {
+		var pedidoModel = new PedidoModel();
+		BeanUtils.copyProperties(pedidoDTO, pedidoModel);
 		return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.save(pedidoModel));
 	}
 	
