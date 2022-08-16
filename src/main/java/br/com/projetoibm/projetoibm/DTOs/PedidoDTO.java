@@ -10,9 +10,8 @@ public class PedidoDTO {
 		return cliente_id;
 	}
 
+	
 	public void setCliente_id(int cliente_id) {
 		this.cliente_id = cliente_id;
 	}
-	
-	
 }

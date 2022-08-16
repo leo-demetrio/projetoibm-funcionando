@@ -27,6 +27,9 @@ public class ProdutoController {
 	public ResponseEntity<ProdutoModel> saveClient(@RequestBody ProdutoDTO produtoDTO) {
 		var produtoModel = new ProdutoModel();
 		BeanUtils.copyProperties(produtoDTO, produtoModel);
+		if (produtoModel.isGenerico_produto()) {
+			produtoModel.setPreco_produto(produtoModel.getPreco_produto() * 0.8);
+		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.save(produtoModel));
 	}
 	

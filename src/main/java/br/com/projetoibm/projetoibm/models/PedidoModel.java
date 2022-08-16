@@ -24,7 +24,7 @@ public class PedidoModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 
 	@JsonIgnore
     @ManyToOne()

@@ -13,14 +13,16 @@ public class ProdutoModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    
+    private int id;
     
     private String nome;
+    private String desc_produto;
+    private Double preco_produto;
+    private boolean generico_produto;
 
 	@JsonIgnore
     @ManyToOne
-	@JoinColumn(name = "pedido_id")
+	@JoinColumn(name = "pedido_id", referencedColumnName = "id")
     private PedidoModel pedido;
 
 	public PedidoModel getPedido() {
@@ -44,6 +46,31 @@ public class ProdutoModel{
 	}
 
 	
+
+	public String getDesc_produto() {
+		return desc_produto;
+	}
+
+	public void setDesc_produto(String desc_produto) {
+		this.desc_produto = desc_produto;
+	}
+
+	public Double getPreco_produto() {
+		return preco_produto;
+	}
+
+	public void setPreco_produto(Double preco_produto) {
+		this.preco_produto = preco_produto;
+	}
+
+	public boolean isGenerico_produto() {
+		return generico_produto;
+	}
+
+	public void setGenerico_produto(boolean generico_produto) {
+		this.generico_produto = generico_produto;
+	}
+
 	public void setPedido(PedidoModel pedido) {
 		this.pedido = pedido;
 	}
