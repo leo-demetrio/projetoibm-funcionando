@@ -1,7 +1,11 @@
 package br.com.projetoibm.projetoibm.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,12 +25,17 @@ public class PedidoModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
+	@JsonIgnore
     @ManyToOne()
     private ClientModel cliente;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="cliente")
-	private Set<ProdutoModel> produtos = new HashSet<>();
+	@OneToMany(mappedBy = "pedido")
+	private List<ProdutoModel> produtos = new ArrayList<>();
+
+	public List<ProdutoModel> getProdutos() {
+		return produtos;
+	}
 
 	public int getId() {
 		return id;
@@ -44,13 +53,5 @@ public class PedidoModel {
 		this.cliente = cliente;
 	}
 
-	public Set<ProdutoModel> getProdutos() {
-		return produtos;
-	}
 
-	public void setProdutos(Set<ProdutoModel> produtos) {
-		this.produtos = produtos;
-	}
-    
-    
 }

@@ -1,11 +1,10 @@
 package br.com.projetoibm.projetoibm.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="produto")
@@ -16,9 +15,15 @@ public class ProdutoModel{
     int id;
     
     private String nome;
-	    
+
+	@JsonIgnore
     @ManyToOne
+	@JoinColumn(name = "pedido_id")
     private PedidoModel pedido;
+
+	public PedidoModel getPedido() {
+		return pedido;
+	}
 
 	public int getId() {
 		return id;
@@ -36,9 +41,6 @@ public class ProdutoModel{
 		this.nome = nome;
 	}
 
-	public PedidoModel getPedido() {
-		return pedido;
-	}
 
 	public void setPedido(PedidoModel pedido) {
 		this.pedido = pedido;
