@@ -25,6 +25,18 @@ public class ProdutoModel{
 	@JoinColumn(name = "pedido_id", referencedColumnName = "id")
     private PedidoModel pedido;
 
+    public ProdutoModel(Object o, String nome, double preco_produto, boolean generico_produto, String desc_produto, PedidoModel pedido) {
+    	this.nome = nome;
+		this.preco_produto = preco_produto;
+		this.generico_produto = generico_produto;
+		this.desc_produto = desc_produto;
+		this.pedido = pedido;
+	}
+
+	public ProdutoModel() {
+
+	}
+
 	public PedidoModel getPedido() {
 		return pedido;
 	}

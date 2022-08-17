@@ -36,7 +36,6 @@ public class PedidoController {
 	public ResponseEntity<List<PedidoModel>> listProdutos() {
 		return ResponseEntity.status(HttpStatus.OK).body(pedidoService.listPedidos());
 	}
-	
 	@PostMapping
 	public ResponseEntity<PedidoModel> saveClient(@RequestBody PedidoDTO pedidoDTO) {
 		var pedidoModel = new PedidoModel();

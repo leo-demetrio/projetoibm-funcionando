@@ -20,6 +20,17 @@ public class ClientModel {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="cliente")
     private Set<PedidoModel> pedidos = new HashSet<>();
 
+	public ClientModel(Object o, String nome, String cpf, String email, String tel) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.tel = tel;
+	}
+
+	public ClientModel() {
+
+	}
+
 	public int getId() {
 		return id;
 	}

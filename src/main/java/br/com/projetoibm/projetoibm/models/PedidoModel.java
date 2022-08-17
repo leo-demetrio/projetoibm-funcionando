@@ -3,10 +3,10 @@ package br.com.projetoibm.projetoibm.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,9 +29,19 @@ public class PedidoModel {
 	@JsonIgnore
     @ManyToOne()
     private ClientModel cliente;
+	private LocalDate data = LocalDate.now();
 
 	@OneToMany(mappedBy = "pedido")
 	private List<ProdutoModel> produtos = new ArrayList<>();
+
+	public PedidoModel(Object o, LocalDate data, ClientModel cliente) {
+		this.data = data;
+		this.cliente = cliente;
+	}
+
+	public PedidoModel() {
+
+	}
 
 	public List<ProdutoModel> getProdutos() {
 		return produtos;
